@@ -23,7 +23,12 @@ function App() {
   }, [query]);
 
   const recipeList = recipes.map(recipe => (
-    <Recipe key={recipe.recipe.label} title={recipe.recipe.label} calories={recipe.recipe.calories} image={recipe.recipe.image}/>
+    <Recipe
+      key={recipe.recipe.label} 
+      title={recipe.recipe.label} 
+      calories={recipe.recipe.calories} 
+      image={recipe.recipe.image}
+      ingredients={recipe.recipe.ingredients}/>
   ))
 
   const changeValue = e => {
@@ -38,15 +43,16 @@ function App() {
 
   return (
     <div className="App">
+      <h1>RECIPE</h1>
       <form onSubmit={getSearch} className='search-form'>
-        <input onChange = {changeValue}className='search-bar' type='text' value={search}/>
+        <input onChange = {changeValue} className='search-bar' type='text' value={search}/>
         <button 
           className='search-button' 
           type="submit">
             Search
         </button>
       </form>
-      {recipeList}
+      <div className="recipes">{recipeList}</div>
     </div>
   );
 }
